@@ -13,6 +13,7 @@ import {
 const appRouter = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<Root />}>
+      <Route path="/pet-details-not-found" element={<PetDetailsNotFound />} />
       <Route path="/search" element={<SearchPage />} />
       <Route path=":type/:id" element={<PetDetailsPage />} />
       <Route path="/" element={<HomePage />} />
