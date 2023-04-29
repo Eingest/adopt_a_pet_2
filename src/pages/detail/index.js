@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { getPetDetails } from "../../api/petfinder";
 import Hero from "../../components/hero";
-import { useParams, Navigate } from "react-router-dom";
+import { useParams, Navigate, useNavigate } from "react-router-dom";
 
 const PetDetailsPage = () => {
   const [data, setData] = useState();
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
   const { id } = useParams();
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     async function getPetsData() {
@@ -23,6 +25,10 @@ const PetDetailsPage = () => {
 
     getPetsData();
   }, [id]);
+
+  const goBack = () => {
+    navigate(-1);
+  };
 
   return (
     <div>
@@ -56,6 +62,11 @@ const PetDetailsPage = () => {
               <h3>Description</h3>
               <p>{data.description}</p>
             </div>
+          </div>
+          <div className="actions-container">
+            <button className="button" onClick={goBack}>
+              Go Back
+            </button>
           </div>
         </main>
       )}
